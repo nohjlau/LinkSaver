@@ -1,0 +1,28 @@
+/* VARIABLES */
+:root {
+    --main-accent: #fc575e;
+    --light-accent-color: #f0f1f5;
+    --dark-accent-color: #333;
+    --main-gray: #555;
+}
+
+/* RESETS */
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+/* GLOBALS */
+body {
+    background-color: var(--light-accent-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
