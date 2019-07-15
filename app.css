@@ -26,3 +26,33 @@ a {
 a:hover {
     cursor: pointer;
 }
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+/* NAVBAR*/
+
+#nav {
+    height: 60px;
+    background: var(--dark-accent-color);
+    margin-bottom: 25px;
+}
+
+#navContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-header {
+    color: var(--light-accent-color);
+    font-size: 28px;
+}
+
+#addBtn {
+    font-size: 24px;
+    color: var(--light-accent-color);
+}
