@@ -67,6 +67,15 @@ a:hover {
     color: var(--light-accent-color);
 }
 
+@media only screen and (max-width: 786px) {
+    #nav {
+        height: 100px;
+    }
+    #navContainer { 
+        flex-direction: column;
+        justify-content: center;
+    }
+}
 /* PANEL */
  .panel {
      background: white;
@@ -115,6 +124,16 @@ a:hover {
 .link {
     position: relative;
 }
+
+#linksList {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+    flex-basis:100%;
+}
+
 .link-options { 
     position: absolute;
     top: 5px;
@@ -138,4 +157,16 @@ a:hover {
     background-color: var(--main-accent);
     color: var(--light-accent-color);
     margin: 5px 2px;
+}
+
+@media only screen and (min-width: 786px) {
+    .flex-item{
+        flex-basis: 50%;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .flex-item { 
+        flex-basis: 33%;
+    }
 }
