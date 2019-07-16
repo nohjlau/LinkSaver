@@ -5,6 +5,8 @@ const cancelButton = document.querySelector("#cancelButton");
 const addLinkPanel = document.querySelector("#addLinkPanel");
 const linksList = document.querySelector("#linksList");
 const addedCategories = document.querySelector("#addedCategories");
+
+let editIndex = -1;
 let linkCategories = [];
 let links = [
     {
@@ -39,6 +41,7 @@ cancelButton.addEventListener('click', (event) => {
 
 function showFormPanel() {
     addLinkPanel.classList.remove("hidden");
+    displayLinkCategories();
 
 }
 function hideFormPanel() {
@@ -90,25 +93,28 @@ submitButton.addEventListener('click', (event) => {
         categories
     }
 
-    links.unshift(newLink);
+    if(editIndex === -1) {
+        links.unshift(newLink);
+    } else { 
+        links[editIndex] = newLink;
+        editIndex = -1;
+    }
 
     clearLinkForm();
-
     displayLinkCategories();
-
     hideFormPanel();
     displayLinks();
 });
 
 function displayLinks() {
     linksList.innerHTML = '';
-
+    let index = 0;
     for(let link of links) {
         let linkHTMLString = `
         <div class="link panel">
             <div class="link-options">
-                <button class="btn-sm">Delete</button>
-                <button class="btn-sm">Edit</button>
+                <button class="btn-sm" onclick="deleteLink(${index})">Delete</button>
+                <button class="btn-sm" onclick="editLink(${index})">Edit</button>
             </div>
             <a href="${link.url}"><h1 class="header">${link.title}</h1></a>
             <p class="link-date">${Date.now()}</p>
@@ -123,5 +129,19 @@ function displayLinks() {
             </div>`;
 
     linksList.innerHTML += linkHTMLString;
+    index++;
     }
+}
+
+function deleteLink(index) {
+    links.splice(index,1);
+    displayLinks();
+}
+
+function editLink(index) {
+    editIndex = index;
+    linkTitle.value = links[index].title;
+    linkUrl.value = links[index].url
+    linkCategories = links[index].categories;
+    showFormPanel();
 }
