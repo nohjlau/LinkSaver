@@ -1,6 +1,8 @@
 const linkCategory = document.querySelector("#linkCategory");
-let linkCategories = [];
+const submitButton = document.querySelector("#submitButton");
 
+let linkCategories = [];
+let links = [];
 console.log(linkCategory);
 
 linkCategory.addEventListener('keydown', function(event) {
@@ -14,6 +16,31 @@ linkCategory.addEventListener('keydown', function(event) {
     }
 })
 
-displayLinkCategories = () => {
+function displayLinkCategories() {
     console.log("Displaying Link Categories");
 }
+
+
+submitButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+
+    const title = linkTitle.value;
+    const url = linkUrl.value;
+    const categories = linkCategories;
+
+    const newLink = {
+        title,
+        url,
+        categories
+    }
+
+    links.push(newLink);
+
+    linkTitle.value = '';
+    linkUrl.value = '';
+    linkCategories.value = '';
+    linkCategories = [];
+
+    displayLinkCategories();
+});
